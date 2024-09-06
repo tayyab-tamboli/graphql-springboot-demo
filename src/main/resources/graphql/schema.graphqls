@@ -1,0 +1,39 @@
+type Query {
+    getPlayers: [PlayerConnection]
+    getPlayer(id: Int): Player
+}
+
+
+type PlayerConnection {
+    edges: [PlayerEdge]
+    pageInfo: PageInfo
+}
+
+type PlayerEdge {
+    node: Player
+    cursor: String
+}
+
+type PageInfo {
+    hasNextPage: Boolean
+    endCursor: String
+}
+
+type Mutation {
+    addPlayer(name:String, team: Team): Player
+    updatePlayer(id: Int!, name:String, team: Team): Player
+}
+
+type Player {
+    id: ID!
+    name: String!
+    team: Team
+
+}
+
+enum Team {
+    MI
+    CSK
+    DD
+    RR
+}
